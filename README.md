@@ -63,6 +63,9 @@ npm run dev
 - Memakai avatar inisial dan ikon generik (lucide-react), bukan aset resmi
   WhatsApp — ini latihan pola UI, bukan menyalin merek.
 
+## Pokoknya udah gw bikin Dokumentasi nya di tiap folder
+## Jadi ngga perlu bingung
+
 ## Ide Lanjutan (kalo ngga mager wkwk)
 
 - Dark mode (tinggal tambah set warna kedua di `colors.js`).
