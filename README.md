@@ -1,4 +1,4 @@
-# WhatsApp Clone — UI/UX (Belajar)
+# WhatsApp Clone 
 
 Clone tampilan WhatsApp murni UI/UX (tanpa backend)
 Dua layar: **Daftar Chat** dan **Ruang Chat**, dengan beberapa interaksi
@@ -47,14 +47,12 @@ main.jsx
             └─ components/Ticks.jsx
 ```
 
-## Cara Menjalankan
+## Cara run
 
 ```bash
 npm install
 npm run dev
 ```
-
-Lalu buka URL yang muncul di terminal (biasanya http://localhost:5173).
 
 ## Catatan
 
@@ -65,7 +63,7 @@ Lalu buka URL yang muncul di terminal (biasanya http://localhost:5173).
 - Memakai avatar inisial dan ikon generik (lucide-react), bukan aset resmi
   WhatsApp — ini latihan pola UI, bukan menyalin merek.
 
-## Ide Lanjutan
+## Ide Lanjutan (kalo ngga mager wkwk)
 
 - Dark mode (tinggal tambah set warna kedua di `colors.js`).
 - Isi layar Status & Calls.
