@@ -21,6 +21,9 @@ pnpm-debug.log*
 .env.local
 .env.*.local
 
+# Server database (auto-generated)
+server/data.json
+
 # Editor / OS
 .vscode/*
 !.vscode/extensions.json

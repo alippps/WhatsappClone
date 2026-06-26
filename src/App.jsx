@@ -1,30 +1,45 @@
-import { useState } from "react";
-import ChatListScreen from "./screens/ChatListScreen";
-import ChatRoomScreen from "./screens/ChatRoomScreen";
+import { useState } from 'react';
+import { SocketProvider } from './contexts/SocketContext';
+import LoginScreen from './screens/LoginScreen';
+import ChatListScreen from './screens/ChatListScreen';
+import ChatRoomScreen from './screens/ChatRoomScreen';
 
-/* ============================================================
-   APP - PENGATUR NAVIGASI ANTAR LAYAR
-   activeChat === null -> tampilkan daftar chat
-   activeChat ada isi  -> tampilkan ruang chat
-   (Untuk app besar, ganti pola ini dengan React Router.)
-   ============================================================ */
 export default function App() {
-  const [activeChat, setActiveChat] = useState(null);
+  const [username, setUsername] = useState(() => localStorage.getItem('wa-username') || null);
+  const [activeRoom, setActiveRoom] = useState(null);
+
+  const handleLogin = (name) => {
+    localStorage.setItem('wa-username', name);
+    setUsername(name);
+  };
 
   return (
     <div
       className="w-full min-h-screen flex items-center justify-center p-4"
-      style={{ background: "#d1d7db" }}
+      style={{ background: '#d1d7db' }}
     >
-      {/* Bingkai ponsel - supaya terasa seperti aplikasi mobile */}
       <div
         className="relative overflow-hidden bg-white shadow-2xl"
-        style={{ width: 390, height: 760, borderRadius: 32, border: "8px solid #111" }}
+        style={{ width: 390, height: 760, borderRadius: 32, border: '8px solid #111' }}
       >
-        {activeChat ? (
-          <ChatRoomScreen chat={activeChat} onBack={() => setActiveChat(null)} />
+        {!username ? (
+          <LoginScreen onLogin={handleLogin} />
         ) : (
-          <ChatListScreen onOpenChat={setActiveChat} />
+          <SocketProvider username={username}>
+            {activeRoom ? (
+              <ChatRoomScreen
+                room={activeRoom}
+                username={username}
+                onBack={() => setActiveRoom(null)}
+              />
+            ) : (
+              <ChatListScreen
+                username={username}
+                onOpenRoom={setActiveRoom}
+                onLogout={() => { localStorage.removeItem('wa-username'); setUsername(null); }}
+              />
+            )}
+          </SocketProvider>
         )}
       </div>
     </div>
